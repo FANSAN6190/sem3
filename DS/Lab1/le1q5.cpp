@@ -1,6 +1,6 @@
 //5. WAP to replace a character by another character in a string. Take both the choices from the user.
 #include<iostream>
-#include<conio.h>
+//#include<conio.h>
 using namespace std;
 int main(){
 	 string s="qwerty";
@@ -13,6 +13,6 @@ int main(){
 			}
 	 }
 	 cout<<s<<endl;
-	 getch();
+//	 getch();
 	 return 0;
 }

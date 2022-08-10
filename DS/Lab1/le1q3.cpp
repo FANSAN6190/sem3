@@ -1,6 +1,6 @@
 //3. WAP to check whether the number is prime or not.
 #include<iostream>
-#include<conio.h>
+//#include<conio.h>
 using namespace std;
 int main(){
 	int n,d=0;
@@ -17,6 +17,6 @@ int main(){
 	if(d<=2){
 		cout<<"Element is Prime"<<endl;
 	}
-	getch();
+//	getch();
 	return 0;
 }

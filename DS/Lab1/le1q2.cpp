@@ -1,6 +1,6 @@
 //2. WAP to search an element in array.
 #include<iostream>
-#include<conio.h>
+//#include<conio.h>
 using namespace std;
 int main(){
 	int e,arr[6]={2,5,3,1,7,8};
@@ -11,6 +11,6 @@ int main(){
 			break;
 		}
 	}
-	getch();
+//	getch();
 	return 0;
 }
