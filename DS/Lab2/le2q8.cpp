@@ -1,4 +1,4 @@
-//WAP to find out nCr factor of given numbers.
+//8. WAP to find out nCr factor of given numbers.
 #include<iostream>
 using namespace std;
  int fact(int n){  

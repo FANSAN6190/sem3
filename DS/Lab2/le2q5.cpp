@@ -10,4 +10,5 @@ int main(){
         a=a/10;
     }
     cout<<d<<endl;
+    return 0;
 }

@@ -1,4 +1,4 @@
-//2. WAP to find out series sum of 1^2 + 2^2 + …. + n^2
+//2. WAP to find out series sum of 1^2 + 2^2 + ï¿½. + n^2
 #include<iostream>
 using namespace std;
 int main(){

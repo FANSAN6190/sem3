@@ -2,18 +2,27 @@
 #include<iostream>
 using namespace std;
 int main(){
-    int arr[5]={1,2,3,4,5};
-    cout<<arr[1];
-    for(int i=0;i<5;i++){
-        if(arr[i]<arr[i+1]){
-            arr[i]=arr[i]+arr[i+1];
-            arr[i+1]=arr[i]-arr[i+1];
-            arr[i]=arr[i]-arr[i+1];
+    int arr[10]={2,5,10,7,1,9,4,3,6,8};
+    //cout<<arr[0]<<endl;
+    char ch;
+    cin>>ch;
+    for(int i=0;i<10;i++){
+        for(int j=i;j<10;j++){
+            if(arr[i]<arr[j] && ch=='d'){
+                arr[j]=arr[j]+arr[i];
+                arr[i]=arr[j]-arr[i];
+                arr[j]=arr[j]-arr[i];
+            } 
+            else if(arr[i]>arr[j]&& ch=='a'){
+                arr[j]=arr[j]+arr[i];
+                arr[i]=arr[j]-arr[i];
+                arr[j]=arr[j]-arr[i];
+            }         
         }
 
     }
-    for(int i=0;i<5;i++){
-        cout<<i<<endl;
+    for(int i=0;i<10;i++){ 
+        cout<<arr[i]<<endl;
     }
 }
 
