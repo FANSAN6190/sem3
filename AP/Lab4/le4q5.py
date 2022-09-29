@@ -11,3 +11,8 @@ heads-3 legs-12 0
 heads-5 legs-10 5
 0'''
 
+l=int(input("Enter the Number of Legs = "))
+h=int(input("Enter the Number of Heads = "))
+R=(l-(2*h))/2
+H=((4*h)-l)/2
+print(R,H)
