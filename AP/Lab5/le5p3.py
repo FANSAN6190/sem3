@@ -10,12 +10,12 @@ for i in range(0,n):
     li.append(a)
 print(li)
 mx=mn=li[0]
-for i in li:
+for i in li: 
     if i>mx:
         mx=i
     elif i<mn:
         mn=i
-print(mx," ",mn)
+print(mn," ",mx)
 i=0
 for i in range(0,n):
     if li[i]==mx:

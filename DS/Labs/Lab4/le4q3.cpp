@@ -12,7 +12,7 @@ int marks_summation(int* marks, int number_of_students, char gender) {
   for(;i<number_of_students;i+=2){
       sum=sum+*(marks+i);
     }
-  return sum;
+  return sum; 
 }
 
 int main() {
