@@ -6,13 +6,22 @@ int main(){
     int n;
     cin>>n;
     int arr[n];
-    int count_arr[n];
     for(int i=0,k=0;i<n;i++){
         cin>>arr[i];
-        //count_arr = new int(1);
-        count_arr[k]=0;
     }
-    for(int i=0;i<n;i++){
-        
+    int e,m = 0;
+    for (int i=0;i<n;i++){
+        int c=0;
+        for (int j=0;j<n;j++) {
+            if (arr[i]==arr[j])
+                c++;
+        }
+        if(c>m){
+            m=c;
+            e=arr[i];
+        }
     }
+    cout<<"Element Appeared Maximum nunber of times = "<<e<<endl;
 }
+
+    

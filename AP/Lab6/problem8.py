@@ -18,9 +18,14 @@ print(D1[a]," : ",D6[a])
 
 #8.d Write a python script to display students’ details who are from same hometown.
 
+from std import D1,D2,D3,D4,D5,D6
+q=[]
 for i,j in D2.items():
-    print("Students from ",j)
-    for m,n in D2.items():
-        if j==n:
-            print(m,D1[m],D2[m],D3[m],D4[m],D5[m],D6[m])
-
+    if j not in q:
+        print("Students from ",j," -")
+        for k,l in D2.items():
+            if j==l:
+                st=[k,D1[k],D3[k],D4[k],D5[k],D6[k]]
+                print(st)
+                q.append(l)
+        print("\n")
