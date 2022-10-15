@@ -11,7 +11,8 @@ int main()
     int n;
     srand(time(NULL));
     cin>>n;
-    int *ar=rdm(n);
+    int *ar;
+    ar=rdm(n);
     print_arr(ar,n);
 }
 int *rdm(int n){
