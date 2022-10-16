@@ -24,7 +24,6 @@ void display(node * start){
         tem=tem->next;
     }
     cout<<tem->data<<endl;
-    
 }
 int main(){
     node * start=NULL;
