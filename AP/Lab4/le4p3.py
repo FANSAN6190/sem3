@@ -1,7 +1,7 @@
-##P3. Write a python function to check whether three given numbers can form the sides of a
-##triangle.
-##Hint: Three numbers can be the sides of a triangle if none of the numbers are greater than or
-##equal to the sum of the other two numbers.
+#P3. Write a python function to check whether three given numbers can form the sides of a
+#triangle.
+#Hint: Three numbers can be the sides of a triangle if none of the numbers are greater than or
+#equal to the sum of the other two numbers.
 def tri(s1,s2,s3):
     if s1>(s2+s3):
         print("Invalid Triangle")
