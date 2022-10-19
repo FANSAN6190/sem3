@@ -1,4 +1,7 @@
 /*4. WAP for checking whether there are any duplicated elements in the array or not?*/
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 using namespace std;
 int main(){

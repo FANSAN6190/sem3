@@ -1,9 +1,11 @@
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
 int main() {
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
     char str[1000];
     int arr[10]={0,0,0,0,0,0,0,0,0,0};
     scanf("%s",str);

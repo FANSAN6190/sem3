@@ -1,6 +1,8 @@
 //3. WAP to check whether the number is prime or not.
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
-//#include<conio.h>
 using namespace std;
 int main(){
 	int n,d=0;

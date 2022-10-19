@@ -1,15 +1,15 @@
 /*1.Write a program to implement binary search algorithm. Assume user will enter the sorted array. */
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include <iostream>
 using namespace std;
 int main() {
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
     int n,x,l=0,r,f=-1;
     cin>>n;
     int arr[n];
     r=n-1;
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
+    for(int i=0;i<n;i++){cin>>arr[i];}
     cin>>x;
     while(l<=r){
         int mid=(l+r)/2;
