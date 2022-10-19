@@ -21,7 +21,5 @@ int main(){
                 f=1;
             }
         }
-        if(f==0){break;}
-        print_arr(arr,n);
-    }
+        if(f==0){break;}print_arr(arr,n);}
 }

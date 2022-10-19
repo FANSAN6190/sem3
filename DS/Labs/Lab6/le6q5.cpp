@@ -15,7 +15,6 @@ int main(){
     qsort(arr,0,n-1);
     print_arr(arr,n);
 }
-
 int qsort(int arr[],int l,int h){
     if(l<h){
         int piv=arr[h];

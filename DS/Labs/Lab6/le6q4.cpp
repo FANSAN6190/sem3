@@ -20,5 +20,4 @@ int main(){
         arr[j+1]=key;
         print_arr(arr,n);
     }
-    
 }

@@ -29,7 +29,5 @@ int *rdm(int n){
     return a;
 }
 void print_arr(int *arr,int n){
-    for(int i=0;i<n;i++){
-        cout<<arr[i]<<endl;
-    }
+    for(int i=0;i<n;i++){cout<<arr[i]<<endl;}
 }
