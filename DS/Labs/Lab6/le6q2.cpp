@@ -1,4 +1,7 @@
 //2. WAP to implement the bubble sort and show the output of each pass.
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 #include "le6q1.h"
 using namespace std;
@@ -18,7 +21,5 @@ int main(){
                 f=1;
             }
         }
-        if(f==0){break;}
-        print_arr(arr,n);
-    }
+        if(f==0){break;}print_arr(arr,n);}
 }

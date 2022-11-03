@@ -1,4 +1,7 @@
 //5. WAP to convert a binary number into decimal.
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 #include<math.h>
 using namespace std;

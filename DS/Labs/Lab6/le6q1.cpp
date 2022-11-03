@@ -1,5 +1,8 @@
 /*1. WAP to implement a function Rdm(n) which returns an array of random numbers{between 0 to 99},
 where n is the size of array. (Hint: use dynamic memory allocation concept)*/
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 #include<cstdlib>
 #include<ctime>
@@ -26,7 +29,5 @@ int *rdm(int n){
     return a;
 }
 void print_arr(int *arr,int n){
-    for(int i=0;i<n;i++){
-        cout<<arr[i]<<endl;
-    }
+    for(int i=0;i<n;i++){cout<<arr[i]<<endl;}
 }

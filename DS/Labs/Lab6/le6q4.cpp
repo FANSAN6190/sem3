@@ -1,4 +1,7 @@
 /*4. WAP to implement the insertion sort and show the output of each pass.*/
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 #include"le6q1.h"
 using namespace std;
@@ -17,5 +20,4 @@ int main(){
         arr[j+1]=key;
         print_arr(arr,n);
     }
-    
 }

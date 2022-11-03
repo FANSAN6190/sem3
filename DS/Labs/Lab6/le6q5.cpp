@@ -1,4 +1,7 @@
 /*5. WAP to implement the quick sort and show the output of each pass.*/
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 #include "le6q1.h"
 using namespace std;
@@ -12,7 +15,6 @@ int main(){
     qsort(arr,0,n-1);
     print_arr(arr,n);
 }
-
 int qsort(int arr[],int l,int h){
     if(l<h){
         int piv=arr[h];

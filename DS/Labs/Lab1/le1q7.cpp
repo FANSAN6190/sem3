@@ -1,9 +1,11 @@
 //7.WAP to sort the array and ask the choice from user for ascending/descending
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 using namespace std;
 int main(){
     int arr[10]={2,5,10,7,1,9,4,3,6,8};
-    //cout<<arr[0]<<endl;
     char ch;
     cin>>ch;
     for(int i=0;i<10;i++){
@@ -21,8 +23,6 @@ int main(){
         }
 
     }
-    for(int i=0;i<10;i++){ 
-        cout<<arr[i]<<endl;
-    }
+    for(int i=0;i<10;i++){ cout<<arr[i]<<endl;}
 }
 

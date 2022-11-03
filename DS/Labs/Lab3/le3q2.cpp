@@ -1,5 +1,8 @@
 /*2. WAP to implement the linear search. Use function concept, if element is found then
 return index number of element otherwise return -1;*/
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 using namespace std;
 int ls(int n);

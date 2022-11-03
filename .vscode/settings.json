@@ -1,6 +1,12 @@
 {
     "ros.distro": "noetic",
     "files.associations": {
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "*.tcc": "cpp",
+        "iostream": "cpp",
+        "regex": "cpp"
     }
 }

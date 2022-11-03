@@ -1,4 +1,7 @@
 //5. WAP to replace a character by another character in a string. Take both the choices from the user.
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 //#include<conio.h>
 using namespace std;

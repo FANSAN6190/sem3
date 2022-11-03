@@ -1,5 +1,8 @@
 /*3. WAP to delete an element from an array, use search algorithm to find the index number
-of given number; if element to be deleted is not found then print “Error: element not found ”. */
+of given number; if element to be deleted is not found then print ï¿½Error: element not found ï¿½. */
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 using namespace std;
 int ls(int n);

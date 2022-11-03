@@ -1,4 +1,7 @@
 //6. WAP to convert a decimal into binary number.
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 using namespace std;
 int main(){
@@ -7,13 +10,9 @@ int main(){
     for(int i=0;d!=0;i++){
         if(d%2==0){
             b=(b*10)+0;
-            if(b==0){
-                m=m*10;
-            }
+            if(b==0){m=m*10;}
         }
-        else{
-            b=(b*10)+1;
-        }
+        else{b=(b*10)+1;}
         d=d/2;
     }
     for(int i=0;b!=0;i++){

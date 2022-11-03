@@ -1,4 +1,7 @@
 //6. WAP to find the reverse of given string.
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 #include<cstring>
 //#include<conio.h>

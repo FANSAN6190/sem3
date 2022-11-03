@@ -1,4 +1,7 @@
 /*6. WAP to implement the merge sort and show the output of each pass.*/
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 #include "le6q1.h"
 using namespace std;

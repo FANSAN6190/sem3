@@ -1,4 +1,7 @@
 //1. WAP to insert new element at given index number in the array.
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 #include<iostream>
 using namespace std;
 int main(){
@@ -15,8 +18,6 @@ int main(){
             arr[i+1]=arr[i+1]-r;
         }
     }
-    for(int i=0;i<10;i++){
-        cout<<arr[i]<<" ";
-    }
+    for(int i=0;i<10;i++){cout<<arr[i]<<" ";}
     return 0;
 }

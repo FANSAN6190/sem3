@@ -15,6 +15,9 @@ vector<string> split(const string &);
  *  2. INTEGER_ARRAY arr
  */
 
+//******************************************************
+//*This program is developed by Fanindra Saini(211B116)*
+//******************************************************
 vector<int> rotateLeft(int d,int n ,vector<int> arr) {
     for(int i=0,j=0;i<d;i++){
         int temp=arr[0];
