@@ -22,7 +22,7 @@ public:
         }
         else{
             cout<<*top<<endl;
-            (*top)+=1;
+            (*top)++;
             arr[*top]=e;
             return *top;
             cout<<*top<<endl;
@@ -35,7 +35,7 @@ public:
         }
         else{
             int r=arr[*top];
-            (*top)-=1;
+            (*top)--;
             return r;
         }
     }
