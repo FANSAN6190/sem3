@@ -1,0 +1,505 @@
+<html>
+<head>
+<title>Welcome to JUET</title>
+<script type="text/javascript">
+
+function disable()
+{
+if (event.button == 2)
+{
+alert("Right Click Disabled !")
+}
+}
+
+</script>
+
+<style fprolloverstyle>A:hover {color: #FF0000}
+</style>
+
+
+<script type="text/javascript">
+
+function pausescroller(content, divId, divClass, delay){
+this.content=content //message array content
+this.tickerid=divId //ID of ticker div to display information
+this.delay=delay //Delay between msg change, in miliseconds.
+this.mouseoverBol=0 //Boolean to indicate whether mouse is currently over scroller (and pause it if it is)
+this.hiddendivpointer=1 //index of message array for hidden div
+document.write('<div id="'+divId+'" class="'+divClass+'" style="position: relative; overflow: hidden"><div class="innerDiv" style="position: absolute; width: 100%" id="'+divId+'1">'+content[0]+'</div><div class="innerDiv" style="position: absolute; width: 100%; visibility: hidden" id="'+divId+'2">'+content[1]+'</div></div>')
+var scrollerinstance=this
+if (window.addEventListener) //run onload in DOM2 browsers
+window.addEventListener("load", function(){scrollerinstance.initialize()}, false)
+else if (window.attachEvent) //run onload in IE5.5+
+window.attachEvent("onload", function(){scrollerinstance.initialize()})
+else if (document.getElementById) //if legacy DOM browsers, just start scroller after 0.5 sec
+setTimeout(function(){scrollerinstance.initialize()}, 500)
+}
+
+pausescroller.prototype.initialize=function(){
+this.tickerdiv=document.getElementById(this.tickerid)
+this.visiblediv=document.getElementById(this.tickerid+"1")
+this.hiddendiv=document.getElementById(this.tickerid+"2")
+this.visibledivtop=parseInt(pausescroller.getCSSpadding(this.tickerdiv))
+//set width of inner DIVs to outer DIV's width minus padding (padding assumed to be top padding x 2)
+this.visiblediv.style.width=this.hiddendiv.style.width=this.tickerdiv.offsetWidth-(this.visibledivtop*2)+"px"
+this.getinline(this.visiblediv, this.hiddendiv)
+this.hiddendiv.style.visibility="visible"
+var scrollerinstance=this
+document.getElementById(this.tickerid).onmouseover=function(){scrollerinstance.mouseoverBol=1}
+document.getElementById(this.tickerid).onmouseout=function(){scrollerinstance.mouseoverBol=0}
+if (window.attachEvent) //Clean up loose references in IE
+window.attachEvent("onunload", function(){scrollerinstance.tickerdiv.onmouseover=scrollerinstance.tickerdiv.onmouseout=null})
+setTimeout(function(){scrollerinstance.animateup()}, this.delay)
+}
+
+pausescroller.prototype.animateup=function(){
+var scrollerinstance=this
+if (parseInt(this.hiddendiv.style.top)>(this.visibledivtop+5)){
+this.visiblediv.style.top=parseInt(this.visiblediv.style.top)-5+"px"
+this.hiddendiv.style.top=parseInt(this.hiddendiv.style.top)-5+"px"
+setTimeout(function(){scrollerinstance.animateup()}, 50)
+}
+else{
+this.getinline(this.hiddendiv, this.visiblediv)
+this.swapdivs()
+setTimeout(function(){scrollerinstance.setmessage()}, this.delay)
+}
+}
+
+pausescroller.prototype.swapdivs=function(){
+var tempcontainer=this.visiblediv
+this.visiblediv=this.hiddendiv
+this.hiddendiv=tempcontainer
+}
+
+pausescroller.prototype.getinline=function(div1, div2){
+div1.style.top=this.visibledivtop+"px"
+div2.style.top=Math.max(div1.parentNode.offsetHeight, div1.offsetHeight)+"px"
+}
+
+pausescroller.prototype.setmessage=function(){
+var scrollerinstance=this
+if (this.mouseoverBol==1) //if mouse is currently over scoller, do nothing (pause it)
+setTimeout(function(){scrollerinstance.setmessage()}, 100)
+else{
+var i=this.hiddendivpointer
+var ceiling=this.content.length
+this.hiddendivpointer=(i+1>ceiling-1)? 0 : i+1
+this.hiddendiv.innerHTML=this.content[this.hiddendivpointer]
+this.animateup()
+}
+}
+
+pausescroller.getCSSpadding=function(tickerobj){ //get CSS padding value, if any
+if (tickerobj.currentStyle)
+return tickerobj.currentStyle["paddingTop"]
+else if (window.getComputedStyle) //if DOM2
+return window.getComputedStyle(tickerobj, "").getPropertyValue("padding-top")
+else
+return 0
+}
+
+
+function FP_swapImg() {//v1.0
+ var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
+ n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
+ elm.$src=elm.src; elm.src=args[n+1]; } }
+}
+
+function FP_preloadImgs() {//v1.0
+ var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
+ for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
+}
+
+function FP_getObjectByID(id,o) {//v1.0
+ var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
+ else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
+ if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
+ for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
+ f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
+ for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
+ return null;
+}
+</script>
+
+</head>
+<body topmargin="0" leftmargin="0" bgcolor="#EFEFEF" style="text-align: center" bgproperties="fixed" vlink="#0000FF">
+ 
+     
+<body onload=" init(); FP_preloadImgs(/*url*/'button2.jpg',/*url*/'button3.jpg',/*url*/'buttonB.jpg',/*url*/'buttonC.jpg',/*url*/'buttonE.jpg',/*url*/'buttonF.jpg',/*url*/'button11.jpg',/*url*/'button12.jpg',/*url*/'button14.jpg',/*url*/'button15.jpg')" style="text-align: center" bgproperties="fixed" vlink="#0000FF"> 
+
+<div align="center">
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="777" id="AutoNumber1" height="64" bgcolor="#99CCFF">
+    </tr>
+      <tr>
+      <td width="78" align="center" height="64" valign="top" bgcolor="#EFEFEF" rowspan="4">
+      <p align="center">
+    <img border="0" src="images/juet_logo1.jpg" width="70" height="78"></td>
+      <td width="446" align="center" height="64" valign="top" bgcolor="#EFEFEF" rowspan="4">
+      <p align="left">
+      <img border="0" src="images/head.jpg" width="447" height="77"></td>
+      <td width="251" align="left" height="16" valign="top" bgcolor="#EFEFEF">
+    <font face="Verdana" size="2">
+            &nbsp;
+            A-B 
+            Road, Raghogarh</font></td>
+    </tr>
+
+      <tr>
+      <td width="251" align="left" height="16" valign="top" bgcolor="#EFEFEF">
+    <font face="Verdana" size="2">
+            &nbsp;
+            Guna (M.P.)- 473 226, India </font></td>
+    </tr>
+
+      <tr>
+      <td width="251" align="left" height="16" valign="top" bgcolor="#EFEFEF">
+    <font face="Verdana" size="2">
+            &nbsp;
+            Ph : +91-7544-267051, 267310</font></td>
+    </tr>
+
+      <tr>
+      <td width="251" align="left" height="16" valign="top" bgcolor="#EFEFEF">
+    <font face="Verdana" size="2">
+            &nbsp;
+            E-mail : </font><font color="#FFFFFF" face="Verdana" size="2">
+            <a href="mailto:contact@jiet.ac.in" style="text-decoration: none">contact@jiet.ac.in</a></font></td>
+    </tr>
+
+    <tr>
+      </td>
+    </tr>    
+    </table>
+</div>
+
+<LAYER NAME="a0" LEFT=10 TOP=10 VISIBILITY=SHOW BGCOLOR="#C60000"  CLIP="0,0,3,3"></LAYER>
+<LAYER NAME="a1" LEFT=10 TOP=10 VISIBILITY=SHOW BGCOLOR="#C60000"  CLIP="0,0,3,3"></LAYER>
+<LAYER NAME="a2" LEFT=10 TOP=10 VISIBILITY=SHOW BGCOLOR="#C60000"  CLIP="0,0,3,3"></LAYER>
+<LAYER NAME="a3" LEFT=10 TOP=10 VISIBILITY=SHOW BGCOLOR="#C60000"  CLIP="0,0,3,3"></LAYER>
+<LAYER NAME="a4" LEFT=10 TOP=10 VISIBILITY=SHOW BGCOLOR="#C60000"  CLIP="0,0,3,3"></LAYER>
+<LAYER NAME="a5" LEFT=10 TOP=10 VISIBILITY=SHOW BGCOLOR="#C60000"  CLIP="0,0,3,3"></LAYER>
+<LAYER NAME="a6" LEFT=10 TOP=10 VISIBILITY=SHOW BGCOLOR="#C60000"  CLIP="0,0,3,3"></LAYER>
+
+<script language="JavaScript">
+<!--
+
+if (document.all){
+document.write('<div id="starsDiv" style="position:absolute;top:0px;left:0px">')
+for (xy=0;xy<7;xy++)
+document.write('<div style="position:relative;width:3px;height:3px;background:#FFFF00;font-size:2px;visibility:visible"></div>')
+document.write('</div>')
+}
+
+if (document.layers)
+{window.captureEvents(Event.MOUSEMOVE);}
+var yBase = 200;
+var xBase = 200;
+var yAmpl = 10;
+var yMax = 40;
+var step = .2;
+var ystep = .5;
+var currStep = 0;
+var tAmpl=1;
+var Xpos = 1;
+var Ypos = 1;
+var i = 0;
+var j = 0;
+
+if (document.all)
+{
+  function MoveHandler(){
+  Xpos = document.body.scrollLeft+event.x;
+  Ypos = document.body.scrollTop+event.y;
+  }
+  document.onmousemove = MoveHandler; 
+}
+
+else if (document.layers)
+{
+  function xMoveHandler(evnt){
+  Xpos = evnt.pageX;
+  Ypos = evnt.pageY;
+  }
+  window.onMouseMove = xMoveHandler;
+}
+
+
+
+function animateLogo() {
+if (document.all)
+{
+ yBase = window.document.body.offsetHeight/4;
+ xBase = window.document.body.offsetWidth/4;
+}
+else if (document.layers)
+{
+ yBase = window.innerHeight/4 ;
+ xBase = window.innerWidth/4;
+}
+
+if (document.all)
+{
+var totaldivs=document.all.starsDiv.all.length
+ for ( i = 0 ; i < totaldivs ; i++ )
+ {
+var tempdiv=document.all.starsDiv.all[i].style
+  tempdiv.top = Ypos + Math.cos((20*Math.sin(currStep/20))+i*70)*yBase*(Math.sin(10+currStep/10)+0.2)*Math.cos((currStep + i*25)/10);
+  tempdiv.left = Xpos + Math.sin((20*Math.sin(currStep/20))+i*70)*xBase*(Math.sin(10+currStep/10)+0.2)*Math.cos((currStep + i*25)/10);
+ }
+}
+
+else if (document.layers)
+{
+ for ( j = 0 ; j < 7 ; j++ ) 
+ {
+var templayer="a"+j
+  document.layers[templayer].top = Ypos + Math.cos((20*Math.sin(currStep/20))+j*70)*yBase*(Math.sin(10+currStep/10)+0.2)*Math.cos((currStep + j*25)/10);
+  document.layers[templayer].left =Xpos + Math.sin((20*Math.sin(currStep/20))+j*70)*xBase*(Math.sin(10+currStep/10)+0.2)*Math.cos((currStep + j*25)/10);
+ }
+}
+currStep += step;
+setTimeout("animateLogo()", 15);
+}
+animateLogo();
+// -->
+</script>
+
+<td width="777" align="center" colspan="3" height="28">
+      <div align="center">
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#808000" width="777" id="AutoNumber2" height="411">
+          <tr>
+            <td width="786" height="31" bgcolor="#FFFFFF" colspan="3" align="center">
+           
+
+            
+            
+             <b><font face="Arial">
+             <marquee behavior="alternate" scrolldelay="120"><a href="https://192.168.4.4">Click Here to View Result</a></marquee></font></b></td>
+          </tr>
+          <tr>
+            <td width="177" height="19" bgcolor="#EFEFEF" align="center">
+             &nbsp;</td>
+            <td width="387" height="19" bgcolor="#EFEFEF">
+            &nbsp;</td>
+            <td width="174" height="19" bgcolor="#EFEFEF">
+            &nbsp;</td>
+          </tr>
+          <tr>
+            <td width="177" height="24" bgcolor="#EFEFEF" align="center">
+             <SCRIPT language=JavaScript>
+            
+            
+ <!--
+dayName = new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat")
+monthName = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec")
+    today = new Date()
+	day = dayName[today.getDay()]
+	dd = today.getDate()
+	mname = monthName[today.getMonth()]
+	yy = today.getYear()
+		document.write("<span class=bottom>" +day+ " , " +dd+ "  " +mname+ " " + yy + " </span>")
+           
+             </SCRIPT>&nbsp;</td>
+            <td width="387" height="24" bgcolor="#EFEFEF">
+            <p align="center"><a href="notice/RTI.htm"><b><font face="Arial">
+            Information Under RTI Act</font></b></a></td>
+            <td width="174" height="24" bgcolor="#EFEFEF">
+            <p align="center"><b><font face="Arial" color="#0000FF">Placement@JUET</font></b></td>
+          </tr>
+          <tr>
+            <td width="177" height="25" bgcolor="#EFEFEF">
+            <p align="center"><b><font face="Arial" color="#000080">News and Events</font></b></td>
+            <td width="387" height="25" bgcolor="#EFEFEF">
+            &nbsp;</td>
+            <td width="1" height="25" bgcolor="#EFEFEF">
+            <b>
+            <font face="Verdana" size="2" color="#FF0000">
+            <marquee width="212" scrolldelay="120">Infosys, Wipro, Torry Harris, Caritor, Siemens, Del, I-Flex, Accenture, Sapient, Satyam, HCL, Birlasoft, Jaypee Group</marquee></font></b></td>
+          </tr>
+          <tr>
+            <td width="177" height="1" bgcolor="#EFEFEF">
+            
+            <script type="text/javascript">
+
+//new pausescroller(name_of_message_array, CSS_ID, CSS_classname, pause_in_miliseconds)
+
+new pausescroller(pausecontent, "pscroller1", "someclass", 3000)
+document.write("<br />")
+new pausescroller(pausecontent2, "pscroller2", "someclass", 2000)
+
+            </script>
+    
+
+            
+            </td>
+            <td width="387" height="236" bgcolor="#EFEFEF" rowspan="6">
+            <p align="center" style="margin-bottom: 6px">&nbsp;<p align="center" style="margin-bottom: 6px">
+			<u><b><font face="Arial">Our Vision</font></b></u><p align="justify" style="margin-left: 15; margin-right: 15; margin-top:1; margin-bottom:6px">
+      <font face="Verdana" size="2" color="#0000FF">Playing a pivotal role to 
+      enable the country and state of Madhya Pradesh in particular in developing 
+      high&nbsp; caliber trained&nbsp; manpower in the frontier areas of 
+      Technologies, to take up challenges of the industry in the fields of 
+      infrastructure development, manufacturing innovations, chemical processing 
+      and developments, communication, networking and industrial biotechnology 
+      applications.</font></p>
+			<p align="justify" style="margin-left: 15; margin-right: 15; margin-top:1">
+      &nbsp;</p>
+            </td>
+            <td width="1" height="236" bgcolor="#EFEFEF" align="right" rowspan="6">
+            
+                        <object classid="clsid:D27CDB6E-AE6D-11CF-96B8-444553540000" id="obj1" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" border="0" width="200" height="150" align="right" hspace="30">
+							<param name="movie" value="images/tour.swf">
+							<param name="quality" value="High">
+							<param name="salign" value="R">
+							<embed src="images/tour.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" name="obj1" width="200" height="150" quality="High" salign="R"></object>
+			</td>
+          </tr>
+          <tr>
+            <td width="177" height="34" bgcolor="#EFEFEF">
+            
+            <p align="left">
+            
+            <img border="0" id="img1" src="button1.jpg" height="20" width="100" alt="Department" fp-style="fp-btn: Border Left 9" fp-title="Department" onmouseover="FP_swapImg(1,0,/*id*/'img1',/*url*/'button2.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img1',/*url*/'button1.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img1',/*url*/'button3.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img1',/*url*/'button2.jpg')"></td>
+          </tr>
+          <tr>
+            <td width="177" height="49" bgcolor="#EFEFEF">
+            
+            <p align="left">
+            
+            <img border="0" id="img2" src="buttonA.jpg" height="20" width="100" alt="Faculty" onmouseover="FP_swapImg(1,0,/*id*/'img2',/*url*/'buttonB.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img2',/*url*/'buttonA.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img2',/*url*/'buttonC.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img2',/*url*/'buttonB.jpg')" fp-style="fp-btn: Border Left 9" fp-title="Faculty"></td>
+          </tr>
+          <tr>
+            <td width="177" height="44" bgcolor="#EFEFEF">
+            
+            <p align="left">
+            
+            <img border="0" id="img3" src="buttonD.jpg" height="20" width="100" alt="About JUET" onmouseover="FP_swapImg(1,0,/*id*/'img3',/*url*/'buttonE.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img3',/*url*/'buttonD.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img3',/*url*/'buttonF.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img3',/*url*/'buttonE.jpg')" fp-style="fp-btn: Border Left 9" fp-title="About JUET"></td>
+          </tr>
+          <tr>
+            <td width="177" height="46" bgcolor="#EFEFEF">
+            
+            <p align="left">
+            
+            <img border="0" id="img4" src="button10.jpg" height="20" width="100" alt="LRC" onmouseover="FP_swapImg(1,0,/*id*/'img4',/*url*/'button11.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img4',/*url*/'button10.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img4',/*url*/'button12.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img4',/*url*/'button11.jpg')" fp-style="fp-btn: Border Left 9" fp-title="LRC"></td>
+          </tr>
+          <tr>
+            <td width="177" height="41" bgcolor="#EFEFEF">
+            
+            <p align="left">
+            
+            <img border="0" id="img5" src="button13.jpg" height="20" width="100" alt="Contact Us" onmouseover="FP_swapImg(1,0,/*id*/'img5',/*url*/'button14.jpg')" onmouseout="FP_swapImg(0,0,/*id*/'img5',/*url*/'button13.jpg')" onmousedown="FP_swapImg(1,0,/*id*/'img5',/*url*/'button15.jpg')" onmouseup="FP_swapImg(0,0,/*id*/'img5',/*url*/'button14.jpg')" fp-style="fp-btn: Border Left 9" fp-title="Contact Us"></td>
+          </tr>
+          <tr>
+            <td width="770" height="37" bgcolor="#FFFFFF" colspan="3" align="center">
+            
+            <font face="Verdana" size="2" color="#0000FF">
+      <img border="0" src="images/knowledge.gif" width="185" height="25"></font></td>
+          </tr>
+          <tr>
+            <td width="257" height="27" bgcolor="#EFEFEF" align="center">
+            
+            <b>JUET-Virtual Tour</b></td>
+            <td width="257" height="27" bgcolor="#EFEFEF" align="center">
+            
+            <b>Mandatory Disclosure</b></td>
+            <td width="256" height="27" bgcolor="#EFEFEF" align="center">
+            
+            <b>JUET-Webmail</b></td>
+          </tr>
+          </table>
+</div>
+      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="781" id="AutoNumber4">
+        <tr>
+        </tr>
+</table>
+
+<body bgcolor="#EFEFEF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="text-align: left" bgproperties="fixed" vlink="#0000FF">
+
+      <body bgcolor="#EFEFEF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="text-align: left" bgproperties="fixed" vlink="#0000FF">
+
+
+
+       <body bgcolor="#EFEFEF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="text-align: left" bgproperties="fixed" vlink="#0000FF">
+    
+
+      
+      
+       <body bgcolor="#EFEFEF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="text-align: left" bgproperties="fixed" vlink="#0000FF">
+    
+       <body bgcolor="#EFEFEF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="text-align: left" bgproperties="fixed" vlink="#0000FF">
+    
+
+      
+      
+      <body bgcolor="#EFEFEF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="text-align: left" bgproperties="fixed" vlink="#0000FF">
+<div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="779" id="AutoNumber6" height="21">
+    <tr>
+      <body bgcolor="#EFEFEF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="text-align: left" bgproperties="fixed" vlink="#0000FF">
+    </tr>
+    
+    </table>
+  </center>
+</div>
+
+<Script LANGUAGE="JavaScript">
+<!-- Hide this from older browsers
+var Count = 0;
+var Text = ":::  Welcome to Jaypee Institute of Engineering and Technology, A-B Road, Raghogarh, Guna (MP) - A Centre of  Excellence  :::";
+var Speed = 90;
+var timerID = null;
+var TimerRunning = false;
+
+var i = 0;
+while (i ++ < 140)
+Text = " " + Text;
+
+function Scroll(){
+window.status = Text.substring(Count++, Text.length);
+if (Count == Text.length)
+Count = 0;
+timerID = setTimeout("Scroll()", Speed);
+TimerRunning = true;
+}
+
+function Start(){
+Stop();
+Scroll();
+}
+
+function Stop(){
+if(TimerRunning)
+clearTimeout(timerID);
+TimerRunning = false;
+}
+
+Start(); 
+  </script>
+
+<body onmousedown="disable()" style="text-align: left" bgproperties="fixed" vlink="#0000FF">
+<table border="1" cellspacing="1" width="777" id="AutoNumber7" height="55">
+  <tr>
+    <td width="358" align="center" bgcolor="#EFEFEF" height="28">
+    <p align="left"><b><font face="Verdana" size="2">
+    <a style="text-decoration: none" href="https://192.168.4.4">!! Student Personal 
+    Information System !!</a></font></b></td>
+    <td width="215" align="center" bgcolor="#EFEFEF" height="28"><b><font face="Verdana" size="2">
+    <a href="notice/notice.htm" style="text-decoration: none">!! Notice 
+    Board !!</a></font></b></td>
+    <td width="191" align="center" bgcolor="#EFEFEF" height="28">
+	<p align="right"><b><font face="Verdana" size="2">
+    <a href="files/webmaster.htm" style="text-decoration: none">!! Webmaster 
+    !!</a></font></b></td>
+  </tr>
+  <tr>
+    <td bgcolor="#000080" colspan="3" width="773" height="22">
+    <p align="center"><b><font color="#FFFFFF" size="1" face="Verdana">Best 
+    viewed in I.E. 7.0 + with 800 x 600 Resolution...........Copyright © 
+	juet.ac.in</font></b></td>
+  </tr>
+</table>
+</body>
+
+</html>

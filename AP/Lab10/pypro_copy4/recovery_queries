@@ -1,0 +1,15 @@
+insert into run(bid,seat_available,run_date) values("mn204",60,"30/11/2022") 
+insert into run(bid,seat_available,run_date) values("mn209",60,"30/11/2022") 
+insert into run(bid,seat_available,run_date) values("af207",65,"30/11/2022") 
+insert into run(bid,seat_available,run_date) values("mn201",70,"01/12/2022") 
+insert into run(bid,seat_available,run_date) values("vm209",30,"05/12/2022") 
+ delete from run where bid="vm209" 
+insert into run(bid,seat_available,run_date) values("vm209",30,"05/12/2022") 
+insert into run(bid,seat_available,run_date) values("mn456",68,"02/12/2022") 
+insert into run(bid,seat_available,run_date) values("gh407",68,"02/12/2022") 
+ delete from run where bid="gh407" 
+insert into run(bid,seat_available,run_date) values("gh407",60,"01/12/2022") 
+insert into run(bid,seat_available,run_date) values("mn204",60,"03/12/2022") 
+insert into run(bid,seat_available,run_date) values("af207",65,"03/12/2022") 
+insert into run(bid,seat_available,run_date) values("gh407",60,"04/12/2022") 
+

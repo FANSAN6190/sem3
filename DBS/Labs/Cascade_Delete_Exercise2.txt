@@ -1,0 +1,163 @@
+#Cascade Delete Excercise
+#Below queries are written using Oracle Databse SQL Syntax
+#Use MySQL syntax to perform similar operations with MySQL Database
+#And observe effect of cascade delete
+
+
+
+SQL> ALTER TABLE STUDENT ADD CONSTRAINT stu_pk PRIMARY KEY(NAME);
+
+SQL> ALTER TABLE STUDENT MODIFY BRANCH CHAR(3) CONSTRAINT nn_N NOT NULL;
+
+SQL> alter table student drop constraint nn_N;
+
+SQL > alter table pupil add dno number(2);
+
+SQL> alter table pupil add constraint p_fk foreign key(dno) references depa(dno);
+
+SQL> insert into pupil values('nayan',123,12);
+
+# observe the error if referenced table is not created - ORA-02291: integrity constraint (SCOTT.P_FK) violated - parent key not found
+
+
+
+SQL> alter table pupil add constraint p_fk foreign key (dno) references depa(dno) on delete cascade;
+
+# observe the error - ORA-02275: such a referential constraint already exists in the table
+# solution to drop the constaint and re create the constraint with delete cascade
+
+SQL> alter table pupil drop constraint p_fk;
+
+SQL> alter table pupil add constraint p_fk foreign key (dno) references depa(dno) on delete cascade;
+
+
+# Try insertin record into pupil
+SQL> insert into pupil values('nayan',1234,12);
+# Observe the error - ORA-02291: integrity constraint (SCOTT.P_FK) violated - parent key not found
+
+# That means We have to populate depa (referenced) table first then only we can populate pupil (Referencing) table 
+
+SQL> insert into depa values('cse',1);
+
+SQL> insert into depa values('che',3);
+
+SQL> insert into depa values('mec',4);
+
+SQL> insert into depa values('ece',6);
+
+SQL> insert into depa values('civ',5);
+
+SQL> insert into pupil values('nayan',1234,1);
+
+SQL> insert into pupil values('raj',1235,2);
+
+# observe the error in this case - ORA-02291: integrity constraint (SCOTT.P_FK) violated - parent key not found
+
+SQL> insert into pupil values('raj',1235,3);
+
+SQL> insert into pupil values('harshit',1236,4);
+
+SQL> insert into pupil values('harshit',1237,5);
+
+SQL> insert into pupil values('alap',1238,6);
+
+SQL> insert into pupil values('alp',1239,7);
+
+
+
+
+# Obseerve the error - ORA-02291: integrity constraint (SCOTT.P_FK) violated - parent key not found
+
+#data in depa and pupil table before cascade delete
+
+SQL> select * from depa;
+
+DNA        DNO
+--- ----------
+cse          1
+mec          4
+ece          6
+civ          5
+che          3
+
+SQL> select * from pupil;
+
+NAME              ENO        DNO
+---------- ---------- ----------
+nayan            1234          1
+alap             1238          6
+harshit          1236          4
+harshit          1237          5
+raj              1235          3
+sagar            3456          3
+
+
+
+SQL> delete from depa where dname = 'che';
+
+1 row deleted.
+
+SQL> select * from depa;
+
+DNA        DNO
+--- ----------
+cse          1
+mec          4
+ece          6
+civ          5
+
+SQL> select * from pupil;
+
+NAME              ENO        DNO
+---------- ---------- ----------
+nayan            1234          1
+alap             1238          6
+harshit          1236          4
+harshit          1237          5
+
+# We deleted a row from depa table and it is delete on cascade so corresponding records in pupil table having dno = 3 will be deleted from the referencing table.
+
+
+SQL> select eno,dno from pupil,depa;
+select eno,dno from pupil,depa
+           *
+# ERROR at line 1: ORA-00918: column ambiguously defined
+
+
+SQL> select eno,depa.dno from pupil,depa;
+
+       ENO        DNO
+---------- ----------
+      1234          1
+      1234          4
+      1234          5
+      1234          6
+      1236          1
+      1236          4
+      1236          5
+      1236          6
+      1237          1
+      1237          4
+      1237          5
+
+       ENO        DNO
+---------- ----------
+      1237          6
+      1238          1
+      1238          4
+      1238          5
+      1238          6
+
+16 rows selected.
+
+SQL>  select eno,name,d.dno,dname from pupil p,depa d where p.dno=d.dno;
+
+       ENO NAME              DNO DNA
+---------- ---------- ---------- ---
+      1234 nayan               1 cse
+      1236 harshit             4 mec
+      1238 alap                6 ece
+      1237 harshit             5 civ
+
+
+

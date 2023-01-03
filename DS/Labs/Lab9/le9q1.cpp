@@ -1,5 +1,8 @@
 #include<iostream>
+<<<<<<< HEAD
 #include<stdlib.h>
+=======
+>>>>>>> 1275a38 (recovery)
 using namespace std;
 class Stack{
     int *top;
@@ -9,6 +12,7 @@ public:
     Stack(int n){
         siz=n;
         arr=new int(siz);
+<<<<<<< HEAD
         for(int i=0;i<siz;i++){
             arr[i]=0;
         }
@@ -60,6 +64,32 @@ public:
         }
         cout<<endl;
     }
+=======
+        for(int i=0;i<siz;i++){arr[i]=0;}
+        *top=-1;
+        cout<<*top<<endl; }
+    int push(int e){
+        if(*top==siz-1){
+            cout<<"Stack Overflow"<<endl;
+            return *top; }
+        else{
+            (*top)++;
+            arr[*top]=e;
+            return *top; }
+    }
+    int pop(){
+        if(*top==-1){
+            cout<<"Stack Underflow"<<endl;
+            return *top; }
+        else{
+            int r=arr[*top];
+            (*top)--;
+            return r; }
+    }
+    void display(){
+        for(int i=0;i<=(*top);i++){cout<<arr[i]<<" ";}
+        cout<<endl; }
+>>>>>>> 1275a38 (recovery)
 };
 int main(){
     int n,choice;
@@ -94,5 +124,8 @@ int main(){
         }
         cout<<"****************"<<endl<<endl;
     }
+<<<<<<< HEAD
     return 0;
+=======
+>>>>>>> 1275a38 (recovery)
 }
