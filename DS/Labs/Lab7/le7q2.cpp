@@ -3,7 +3,7 @@
 //******************************************************
 //*This program is developed by Fanindra Saini(211B116)*
 //******************************************************
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 struct node{
     int info;
@@ -87,5 +87,105 @@ int main(){
             cout << "Wrong Input";
             break;
         }
+    }
+}*/
+
+#include<iostream>
+using namespace std;
+class node{
+    public:
+    int data;
+    node *next;
+};
+node * in_at_beg(node*start,int ele){
+    node * newnode=new node();
+    newnode->data=ele;
+    if(start==NULL){
+        start=newnode;
+    }
+    else{
+        newnode->next=start;
+        start=newnode;
+    }
+    return start;
+}
+node * in_at_end(node * start,int ele){
+    node *newnode=new node();
+    node * temp=start;
+    newnode->data=ele;
+    if(start==NULL){
+        start=newnode;
+    }
+    else{
+        while (temp->next!=NULL){
+            temp=temp->next;
+        }
+        newnode->next=temp->next;
+        temp->next=newnode;
+    }
+    return start;
+}
+node * in_at_loc(node * start,int ele,int loc){
+    node * newnode=new node();
+    newnode->data=ele;
+    if(start==NULL){
+        start=newnode;
+    }
+    else{
+        node * temp=start;
+        while(loc){
+            temp=temp->next;
+            loc-=1;
+        }
+        newnode->next=temp->next;
+        temp->next=newnode;
+    }
+    return start;
+}
+void display(node * start){
+    node *temp=start;
+    while (temp!=NULL){
+        cout<<temp->data<<endl;
+        temp=temp->next;
+    }
+    delete temp;
+}
+int main(){
+    int ch;
+    node * start=NULL;
+    while(ch){
+        cout<<"-----------------------"<<endl;
+        cout<<"Enter the Choice : ";
+        cin>>ch;
+        int ele,loc;
+        
+        switch(ch){
+            case 0:
+            break;
+            case 1:
+            cout<<"Enter the element : ";
+            cin>>ele;
+            start=in_at_beg(start,ele);
+            break;
+            case 2:
+            cout<<"Enter the element : ";
+            cin>>ele;
+            cout<<"Enter the Location : ";
+            cin>>loc;
+            start=in_at_loc(start,ele,loc);
+            break;
+            case 3:
+            cout<<"Enter the element : ";
+            cin>>ele;
+            start=in_at_end(start,ele);
+            break;
+            case 4:
+            display(start);
+            break;
+            default:
+            cout<<"Wrong Input!!!"<<endl;
+            break;
+        }
+        cout<<"-----------------------"<<endl;
     }
 }
